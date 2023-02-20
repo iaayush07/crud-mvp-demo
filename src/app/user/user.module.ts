@@ -9,6 +9,7 @@ import { UserDetailsContainerComponent } from './user-details-container/user-det
 import { UserFormPresentationComponent } from './user-form-container/user-form-presentation/user-form-presentation.component';
 import { UserListPresentationComponent } from './user-list-container/user-list-presentation/user-list-presentation.component';
 import { UserDetailsPresentationComponent } from './user-details-container/user-details-presentation/user-details-presentation.component';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { UserDetailsPresentationComponent } from './user-details-container/user-
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    NgbDropdownModule
   ]
 })
 export class UserModule { }

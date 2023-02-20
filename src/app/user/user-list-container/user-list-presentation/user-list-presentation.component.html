@@ -1,3 +1,81 @@
 <div>
-  <h4>User and Admin</h4>
+  <div class="d-flex justify-content-between">
+    <h4 class="mb-3">User and Admin</h4>
+    <div>
+      <a class="btn btn-primary rounded-0 me-4 shadow">Add New
+      </a>
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn toggle-btn shadow" display="dynamic" id="dropdownBasic1" ngbDropdownToggle>
+          This Month
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem>Action - 1</button>
+          <button ngbDropdownItem>Another Action</button>
+          <button ngbDropdownItem>Something else is here</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user-admin mb-3">
+    <ul class="d-flex">
+      <li>
+        <a>User</a>
+      </li>
+      <li class="ms-4">
+        <a>Admin</a>
+      </li>
+    </ul>
+  </div>
+  <div class="d-flex justify-content-between rounded-0">
+    <div>
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label ms-2" for="exampleCheck1">Select all</label>
+    </div>
+    <div class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <div ngbDropdown class="d-inline-block ms-2">
+        <button type="button" class="btn toggle-btn shadow-sm" display="dynamic" id="dropdownBasic2" ngbDropdownToggle>
+          Alphabetic order
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+          <button ngbDropdownItem>Action - 1</button>
+          <button ngbDropdownItem>Another Action</button>
+          <button ngbDropdownItem>Something else is here</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">All</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Status</th>
+        <th scope="col">Last Access</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of [1,2,3,4,5,6,7]" class="mb-3 shadow-sm">
+        <th scope="row"><input type="checkbox" class="form-check-input"></th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td class="text-primary">@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>
+          <div ngbDropdown>
+            <a class="action" display="dynamic" id="dropdownBasic3" ngbDropdownToggle>...</a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
+              <button ngbDropdownItem>Edit</button>
+              <button ngbDropdownItem>Delete</button>
+              <button ngbDropdownItem>Detail</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
