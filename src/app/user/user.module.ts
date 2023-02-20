@@ -10,6 +10,8 @@ import { UserFormPresentationComponent } from './user-form-container/user-form-p
 import { UserListPresentationComponent } from './user-list-container/user-list-presentation/user-list-presentation.component';
 import { UserDetailsPresentationComponent } from './user-details-container/user-details-presentation/user-details-presentation.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from './service/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,7 +27,11 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     UserRoutingModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    HttpClientModule
+  ],
+  providers:[
+    UserService
   ]
 })
 export class UserModule { }
