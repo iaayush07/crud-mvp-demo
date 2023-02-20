@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { user } from '../../user.model';
 
 @Component({
@@ -10,6 +11,10 @@ import { user } from '../../user.model';
 export class UserListPresentationComponent {
   public userList! :  user[];
 
+  constructor(private _router : Router){
+
+  }
+
   @Input() public set userData(value: user[] | null) {
     if (value) {
       this.userList = value;
@@ -17,5 +22,8 @@ export class UserListPresentationComponent {
   }
   public get userData(): user[] {
     return this.userList;
+  }
+  openForm(){
+    this._router.navigateByUrl('/user-form')
   }
 }
