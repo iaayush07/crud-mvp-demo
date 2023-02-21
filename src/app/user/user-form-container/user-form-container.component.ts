@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserService } from '../service/user.service';
+import { user } from '../user.model';
 
 @Component({
   selector: 'app-user-form-container',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class UserFormContainerComponent {
 
+  constructor(private mainUserService : UserService){
+
+  }
+
+  public addUser(user: user){
+    this.mainUserService.addUserData(user).subscribe((res:user)=>{
+      console.log(res);
+    })
+  }
 }

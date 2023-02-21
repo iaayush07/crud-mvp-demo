@@ -8,12 +8,17 @@ export class UserService {
 
   public baseUrl : string;
   constructor(private _http: HttpClient) {
-    this.baseUrl = "http://localhost:3000/user/";
+    this.baseUrl = "http://localhost:3000/user";
    }
 
    getUserData(): Observable<user[]> {
     const url: string = this.baseUrl;
-    return this._http.get<user[]>(url)
+    return this._http.get<user[]>(url);
+  }
+
+  addUserData(user: any): Observable<any>{
+    const url: string = this.baseUrl;
+    return this._http.post<any>(url,user);
   }
 
 }

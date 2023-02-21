@@ -12,6 +12,8 @@ import { UserDetailsPresentationComponent } from './user-details-container/user-
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from './service/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserFormPresenterService } from './user-form-container/user-form-presenter/user-form-presenter.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,10 +30,13 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     UserRoutingModule,
     NgbDropdownModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers:[
-    UserService
+    UserService,
+    UserFormPresenterService
   ]
 })
 export class UserModule { }
