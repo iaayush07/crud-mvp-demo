@@ -1,14 +1,14 @@
 {
   "user": [
     {
-      "id": 1,
       "firstName": "Ayush",
       "lastName": "Dhimmar",
       "email": "ayush@123.com",
-      "status": "active"
+      "status": "1",
+      "id": 1
     },
     {
-      "firstName": "dd",
+      "firstName": "Ayush",
       "lastName": "Dhimmar",
       "email": "aayush@1234.com",
       "status": "2",
@@ -20,6 +20,20 @@
       "email": "aayush@1234.com",
       "status": "1",
       "id": 3
+    },
+    {
+      "firstName": "Ayush",
+      "lastName": "Dhimmar",
+      "email": "ayush@12356.com",
+      "status": "1",
+      "id": 4
+    },
+    {
+      "firstName": "Ayush",
+      "lastName": "Dhimmar",
+      "email": "ayush@123.com",
+      "status": "1",
+      "id": 5
     }
   ]
 }

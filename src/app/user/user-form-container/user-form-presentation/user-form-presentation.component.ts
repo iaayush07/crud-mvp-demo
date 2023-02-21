@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { user } from '../../user.model';
 import { UserFormPresenterService } from '../user-form-presenter/user-form-presenter.service';
@@ -6,14 +6,24 @@ import { UserFormPresenterService } from '../user-form-presenter/user-form-prese
 @Component({
   selector: 'app-user-form-presentation',
   templateUrl: './user-form-presentation.component.html',
-  styleUrls: ['./user-form-presentation.component.scss']
+  styleUrls: ['./user-form-presentation.component.scss'],
+  changeDetection : ChangeDetectionStrategy.OnPush,
+  viewProviders:[UserFormPresenterService]
 })
 export class UserFormPresentationComponent implements OnInit{
 
+
+  @Input() public set editUser(value: user | null) {
+    if(value){
+      this.userPresentationForm.patchValue(value);
+      this.value = value;
+    }
+  }
   @Output() public submitData: EventEmitter<user>;
   @Output() public edittedData: EventEmitter<user>;
   public userPresentationForm : FormGroup;
   public isSubmited : boolean;
+  public value : any;
 
   constructor(private userformPresenterService : UserFormPresenterService){
     this.userPresentationForm = this.userformPresenterService.buildForm();
@@ -29,9 +39,13 @@ export class UserFormPresentationComponent implements OnInit{
      */
     this.userformPresenterService.userForm$.subscribe((res:user)=>{
       console.log(res);
-
-      this.submitData.emit(res);
+      if(this.value){
+        this.edittedData.emit(res);
+      }else{
+        this.submitData.emit(res);
+      }
     });
+
   }
 
    // geter function

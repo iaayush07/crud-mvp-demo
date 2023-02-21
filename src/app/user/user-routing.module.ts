@@ -20,6 +20,9 @@ const routes: Routes = [
     {
       path : 'user-form',
       component : UserFormContainerComponent
+    },{
+      path: 'edit/:id',
+      component: UserFormContainerComponent
     }
   ]
 }

@@ -8,7 +8,7 @@ export class UserService {
 
   public baseUrl : string;
   constructor(private _http: HttpClient) {
-    this.baseUrl = "http://localhost:3000/user";
+    this.baseUrl = "http://localhost:3000/user/";
    }
 
    /**
@@ -22,9 +22,18 @@ export class UserService {
   /**
    * post user data
    */
-  addUserData(user: any): Observable<any>{
+  addUserData(user: user): Observable<user>{
     const url: string = this.baseUrl;
-    return this._http.post<any>(url,user);
+    return this._http.post<user>(url,user);
   }
 
+  getUserById(id:number):Observable<user>{
+    const url: string = this.baseUrl+id;
+    return this._http.get<user>(url);
+  }
+
+  public edditedData(user: user, id: number): Observable<user> {
+    const url: string = this.baseUrl+id;
+    return this._http.put<user>(url,user)
+  }
 }

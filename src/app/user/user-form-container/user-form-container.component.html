@@ -1,1 +1,2 @@
-<app-user-form-presentation (submitData)="addUser($event)"></app-user-form-presentation>
+<app-user-form-presentation (submitData)="addUser($event)" (edittedData)="editUser($event)"
+  [editUser]="edituser$ | async"></app-user-form-presentation>
