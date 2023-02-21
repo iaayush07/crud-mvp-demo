@@ -24,6 +24,9 @@ export class UserFormPresentationComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    /**
+     * emiting data through output
+     */
     this.userformPresenterService.userForm$.subscribe((res:user)=>{
       console.log(res);
 
@@ -36,6 +39,9 @@ export class UserFormPresentationComponent implements OnInit{
     return this.userPresentationForm.controls;
   }
 
+  /**
+   * submit data
+   */
   submitForm(){
     this.isSubmited = true;
     this.userformPresenterService.saveUserData(this.userPresentationForm);

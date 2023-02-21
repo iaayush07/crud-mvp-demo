@@ -13,6 +13,10 @@ export class UserFormContainerComponent {
 
   }
 
+  /**
+   * post call
+   * @param user
+   */
   public addUser(user: user){
     this.mainUserService.addUserData(user).subscribe((res:user)=>{
       console.log(res);

@@ -14,6 +14,9 @@ export class UserFormPresenterService {
     this.userForm$= this.userForm.asObservable();
   }
 
+  /**
+   * @returns FormGourp
+   */
   public buildForm(): FormGroup {
     return this.fb.group({
         firstName: ['', [Validators.required, Validators.maxLength(25), Validators.pattern('^[a-zA-Z]+$')]],
@@ -23,6 +26,10 @@ export class UserFormPresenterService {
     });
 }
 
+/**
+ * sending form to presentation through subject
+ * @param saveForm
+ */
 public saveUserData(saveForm: FormGroup){
   this.userForm.next(saveForm.value)
   console.log(saveForm);
