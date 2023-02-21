@@ -7,11 +7,33 @@
           <label for="exampleFormControlInput1" class="form-label">First Name</label>
           <input class="form-control" id="exampleFormControlInput1" placeholder="Enter your first name"
             formControlName="firstName">
+          <div
+            *ngIf="validator['firstName'].invalid && (isSubmited || validator['firstName'].touched||validator['firstName'].dirty)">
+            <span class="text-danger fs-7" *ngIf="validator['firstName'].errors?.['required']">This Field
+              Is
+              Required.</span>
+            <span class="text-danger fs-7" *ngIf="validator['firstName'].errors?.['pattern']"> First Name may
+              contain letters only.</span>
+            <span class="text-danger fs-7"
+              *ngIf="validator['firstName'].errors?.['maxlength'] && !(validator['firstName'].errors?.['pattern'])">
+              First Name must be less than 25 characters.</span>
+          </div>
         </div>
         <div class="col-6">
           <label for="exampleFormControlInput2" class="form-label">Last Name</label>
           <input class="form-control" id="exampleFormControlInput2" placeholder="Enter your last name"
             formControlName="lastName">
+          <div
+            *ngIf="validator['lastName'].invalid && (isSubmited  || validator['lastName'].touched ||validator['lastName'].dirty)">
+            <span class="text-danger fs-7" *ngIf="validator['lastName'].errors?.['required']"> This Field Is
+              Required</span>
+            <span class="text-danger fs-7" *ngIf="validator['lastName'].errors?.['pattern']"> Last Name may
+              contain
+              letters only.</span>
+            <span class="text-danger fs-7"
+              *ngIf="validator['lastName'].errors?.['maxlength'] && !(validator['lastName'].errors?.['pattern'])">
+              Last Name must be less than 25 characters.</span>
+          </div>
         </div>
       </div>
       <div class="row mt-4">
@@ -19,6 +41,18 @@
           <label for="exampleFormControlInput3" class="form-label">Email address</label>
           <input class="form-control" id="exampleFormControlInput3" placeholder="name@example.com"
             formControlName="email">
+          <div
+            *ngIf="validator['email'].invalid && (isSubmited || validator['email'].touched ||validator['email'].dirty)">
+            <span class="text-danger fs-7" *ngIf="validator['email'].errors?.['required']">This Field Is
+              Required</span>
+            <span class="text-danger fs-7" *ngIf="validator['email'].errors?.['pattern'] && validator['email'].touched">
+              Please enter valid
+              email
+              id.</span>
+            <span class="text-danger fs-7"
+              *ngIf="validator['email'].errors?.['maxlength'] && !(validator['email'].errors?.['pattern'])">
+              email Id must be less than 50 characters.</span>
+          </div>
         </div>
         <div class="col-6">
           <label for="exampleFormControlInput4" class="form-label">Status</label>
@@ -29,10 +63,15 @@
             <option value="2">Deactivate</option>
             <option value="3">Muted</option>
           </select>
+          <!-- <div
+            *ngIf="validator['stateId'].invalid && (isSubmited || validator['stateId'].touched||validator['stateId'].dirty )">
+            <span class="text-danger" *ngIf="validator['stateId'].errors?.['required']"> This Field Is
+              Required</span>
+          </div> -->
         </div>
       </div>
       <div class="mt-4 d-flex justify-content-end">
-        <button class="btn btn-primary" type="submit">Add new user</button>
+        <button class="btn btn-primary" type="submit" [disabled]="userPresentationForm.invalid">Add new user</button>
       </div>
     </form>
   </div>
