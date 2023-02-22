@@ -12,6 +12,7 @@ import { UserListPresnterService } from '../user-list-presenter/user-list-presnt
 })
 export class UserListPresentationComponent {
   public userList! :  user[];
+  public searchText! : string;
 
   constructor(private _router : Router){
 

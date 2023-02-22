@@ -14,6 +14,7 @@ import { UserService } from './service/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserFormPresenterService } from './user-form-container/user-form-presenter/user-form-presenter.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbDropdownModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers:[
     UserService
