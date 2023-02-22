@@ -16,14 +16,17 @@ export class UserFormPresentationComponent implements OnInit{
   @Input() public set editUser(value: user | null) {
     if(value){
       this.userPresentationForm.patchValue(value);
-      this.value = value;
+      this._value = value;
     }
+  }
+  public get value(){
+    return this._value;
   }
   @Output() public submitData: EventEmitter<user>;
   @Output() public edittedData: EventEmitter<user>;
   public userPresentationForm : FormGroup;
   public isSubmited : boolean;
-  public value : any;
+  public _value : any;
 
   constructor(private userformPresenterService : UserFormPresenterService){
     this.userPresentationForm = this.userformPresenterService.buildForm();
@@ -38,7 +41,7 @@ export class UserFormPresentationComponent implements OnInit{
      * emiting data through output
      */
     this.userformPresenterService.userForm$.subscribe((res:user)=>{
-      console.log(res);
+      // console.log(res);
       if(this.value){
         this.edittedData.emit(res);
       }else{
@@ -59,6 +62,6 @@ export class UserFormPresentationComponent implements OnInit{
   submitForm(){
     this.isSubmited = true;
     this.userformPresenterService.saveUserData(this.userPresentationForm);
-    console.log(this.userPresentationForm);
+    // console.log(this.userPresentationForm);
   }
 }

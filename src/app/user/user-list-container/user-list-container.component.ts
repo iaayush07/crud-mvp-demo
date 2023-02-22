@@ -18,4 +18,12 @@ export class UserListContainerComponent implements OnInit{
   ngOnInit(): void {
     this.userData$= this.userService.getUserData();
   }
+
+  deleteUser(id:number){
+    this.userService.deleteUser(id).subscribe(res=>{
+      if(res){
+        this.userData$= this.userService.getUserData();
+      }
+    })
+  }
 }

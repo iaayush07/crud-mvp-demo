@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from '../service/user.service';
@@ -9,16 +9,20 @@ import { user } from '../user.model';
   templateUrl: './user-form-container.component.html',
   styleUrls: ['./user-form-container.component.scss']
 })
-export class UserFormContainerComponent {
+export class UserFormContainerComponent implements OnInit{
 
   public id : number;
-  public edituser$ : Observable<user>
+  public edituser$? : Observable<user>
 
   constructor(private mainUserService : UserService, private router: ActivatedRoute){
     this.id =this.router.snapshot.params['id'];
-    this.edituser$ = this.mainUserService.getUserById(this.id);
   }
 
+  ngOnInit(): void {
+    if(this.id){
+      this.edituser$ = this.mainUserService.getUserById(this.id);
+    }
+  }
   /**
    * post call
    * @param user

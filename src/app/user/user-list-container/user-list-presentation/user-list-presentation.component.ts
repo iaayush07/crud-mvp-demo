@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { user } from '../../user.model';
 import { UserListPresnterService } from '../user-list-presenter/user-list-presnter.service';
@@ -31,11 +31,17 @@ export class UserListPresentationComponent {
   public get userData(): user[] {
     return this.userList;
   }
+
+  @Output() public deleteEvent : EventEmitter<number> = new EventEmitter<number>();
   openForm(){
     this._router.navigateByUrl('/user-form')
   }
 
   edit(id: number){
     this._router.navigateByUrl(`/edit/${id}`);
+  }
+
+  delete(id:number){
+    this.deleteEvent.emit(id);
   }
 }

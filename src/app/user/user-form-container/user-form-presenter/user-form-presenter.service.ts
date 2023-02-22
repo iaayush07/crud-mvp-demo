@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { user } from '../../user.model';
 
@@ -9,7 +10,7 @@ export class UserFormPresenterService {
   private userForm: Subject<user>
   public userForm$: Observable<user>
 
-  constructor(private fb : FormBuilder) {
+  constructor(private fb : FormBuilder, private router : Router) {
     this.userForm = new Subject();
     this.userForm$= this.userForm.asObservable();
   }
@@ -31,8 +32,8 @@ export class UserFormPresenterService {
  * @param saveForm
  */
 public saveUserData(saveForm: FormGroup){
-  this.userForm.next(saveForm.value)
-  console.log(saveForm);
-
+  this.userForm.next(saveForm.value);
+  this.router.navigateByUrl('/user-list')
+  // console.log(saveForm);
 }
 }

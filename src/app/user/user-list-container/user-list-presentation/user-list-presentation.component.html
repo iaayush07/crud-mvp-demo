@@ -68,7 +68,7 @@
             <a class="action" display="dynamic" id="dropdownBasic3" ngbDropdownToggle>...</a>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
               <button ngbDropdownItem (click)="edit(user.id)">Edit</button>
-              <button ngbDropdownItem>Delete</button>
+              <button ngbDropdownItem (click)="delete(user.id)">Delete</button>
               <button ngbDropdownItem>Detail</button>
             </div>
           </div>
