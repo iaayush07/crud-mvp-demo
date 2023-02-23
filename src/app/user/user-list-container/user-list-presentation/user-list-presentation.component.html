@@ -62,7 +62,13 @@
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td class="text-primary">{{user.email}}</td>
-        <td>{{user?.status}}</td>
+        <td>
+          <div class="p-2 rounded-2 status d-flex justify-content-center align-items-center"
+            style="--bs-bg-opacity: .7;"
+            [ngClass]="[user.status == 'Active' ? 'bg-success' : '' || user.status == 'Deactivate'? 'bg-danger' : '' || user.status == 'Muted'? 'bg-warning' : '']">
+            {{user?.status}}
+          </div>
+        </td>
         <td>
           <div ngbDropdown>
             <a class="action" display="dynamic" id="dropdownBasic3" ngbDropdownToggle>...</a>
