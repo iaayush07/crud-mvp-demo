@@ -2,7 +2,17 @@
   <h3>Add new user</h3>
   <div>
     <form class="flex-grow-1" [formGroup]="userPresentationForm" (ngSubmit)="submitForm()">
-      <div class="row">
+      <div class="row ">
+        <div class="col-12 d-flex justify-content-center">
+          <label for="file-input" class="profile-wrapper cursor-pointer position-relative">
+            <div class="overflow-hidden rounded-circle profile">
+              <img src="{{base64}}">
+            </div>
+          </label>
+          <input type="file" id="file-input" class="d-none" (change)="onFileSelect($event)">
+        </div>
+      </div>
+      <div class="row mt-4">
         <div class="col-6">
           <label for="exampleFormControlInput1" class="form-label">First Name</label>
           <input class="form-control" id="exampleFormControlInput1" placeholder="Enter your first name"

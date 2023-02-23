@@ -4,4 +4,5 @@ export class user{
    public lastName! : string;
    public email! : string;
    public status! : string;
+   public profileImage! : string;
 }

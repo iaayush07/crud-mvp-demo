@@ -7,12 +7,16 @@ import { user } from '../../user.model';
 @Injectable()
 export class UserFormPresenterService {
 
-  private userForm: Subject<user>
-  public userForm$: Observable<user>
+  private userForm: Subject<user>;
+  public profileImage: Subject<any>;
+  public userForm$: Observable<user>;
+  public image_file!: File;
+  public baseString!: string;
 
   constructor(private fb : FormBuilder, private router : Router) {
     this.userForm = new Subject();
     this.userForm$= this.userForm.asObservable();
+    this.profileImage = new Subject();
   }
 
   /**
@@ -36,4 +40,20 @@ public saveUserData(saveForm: FormGroup){
   this.router.navigateByUrl('/user-list')
   // console.log(saveForm);
 }
+
+ /**
+   *convert selected file into base64 string
+   * @param event to get file path from event
+   */
+   public onSelectFile(event: any) {
+    this.image_file = event.target.files[0];
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(this.image_file);
+
+    fileReader.onload = () => {
+      this.baseString = String(fileReader.result);
+      this.profileImage.next(this.baseString);
+    };
+  }
 }
