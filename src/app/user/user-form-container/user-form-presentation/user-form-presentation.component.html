@@ -6,10 +6,14 @@
         <div class="col-12 d-flex justify-content-center">
           <label for="file-input" class="profile-wrapper cursor-pointer position-relative">
             <div class="overflow-hidden rounded-circle profile">
-              <img src="{{base64}}">
+              <img src="{{faltuPic ? faltuPic : base64 }}">
             </div>
           </label>
-          <input type="file" id="file-input" class="d-none" (change)="onFileSelect($event)">
+          <!-- <label class="d-flex flex-column justify-content-center align-items-center bg-light position-relative mx-4">
+            <p class="position-absolute translate-middle top-50 end-0">Darg and Drop here</p> -->
+          <input type="file" id="file-input" class="opacity-0 " (change)="onFileSelect($event)">
+          <!-- </label> -->
+          <!-- <button type="button" (click)="onUpload()">Upload</button> -->
         </div>
       </div>
       <div class="row mt-4">

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy,ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy,ChangeDetectorRef, Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 // import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { user } from '../../user.model';
@@ -17,14 +17,22 @@ export class UserFormPresentationComponent implements OnInit{
   @Input() public set editUser(value: user | null) {
     if(value){
       this.userPresentationForm.patchValue(value);
-      this._value = value;
-    }
-  }
-  public get value(){
+      this.userPresentationForm.controls['profileImage'].patchValue(value['profileImage'])
+      // this.userPresentationlog
+      console.log(this.userPresentationForm.controls['profileImage'].patchValue(value['profileImage']));
+     this.faltuPic= value['profileImage'];
+
+
+console.log(value);
+this._value = value;
+}
+}
+public get value(){
     return this._value;
   }
   @Output() public submitData: EventEmitter<user>;
   @Output() public edittedData: EventEmitter<user>;
+  public faltuPic:any;
   public userPresentationForm : FormGroup;
   public isSubmited : boolean;
   public _value : any;
@@ -74,5 +82,9 @@ export class UserFormPresentationComponent implements OnInit{
       this._changeDetector.markForCheck();
       this.base64 = res;
     });
+  }
+
+  onUpload(){
+
   }
 }

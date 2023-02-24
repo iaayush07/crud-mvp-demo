@@ -57,8 +57,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of userList | filter : searchText" class="mb-3 shadow-sm">
-        <th scope="row"><input type="checkbox" class="form-check-input"></th>
+      <tr *ngFor="let user of userList | filter : searchText" class="mb-3 shadow-sm ">
+        <th scope="row"><img src="{{user.profileImage}}" alt="" class="pro-imgg"></th>
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td class="text-primary">{{user.email}}</td>
